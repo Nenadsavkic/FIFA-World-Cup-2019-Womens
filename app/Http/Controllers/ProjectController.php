@@ -4,9 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Duel;
 use App\Models\Team;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
-use PhpParser\Node\Stmt\Global_;
 
 class ProjectController extends Controller
 {
@@ -15,11 +13,11 @@ class ProjectController extends Controller
 
     public function welcome()
     {  
-        $response = Http::get("http://worldcup.sfg.io/teams/");
+        $response = json_decode(Http::get("http://worldcup.sfg.io/teams/"));
         $counter = collect($response)->count();
 
 
-            foreach ($response as $ey => $value) {
+            foreach ($response as $key => $value) {
                 $teams = new Team();
                 $teams->id = $value->id;
                 $teams->country = $value->country;

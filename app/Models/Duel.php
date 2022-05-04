@@ -9,6 +9,5 @@ class Duel extends Model
 {
     use HasFactory;
     
-    protected $guarded = [];
 
 }
