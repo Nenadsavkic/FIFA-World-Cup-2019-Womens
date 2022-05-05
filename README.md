@@ -1,6 +1,6 @@
 # FIFA WorldCup for Women 2019.
 
-Zadartak
+Zadatak
 
 Napraviti aplikaciju u php-u:
 
