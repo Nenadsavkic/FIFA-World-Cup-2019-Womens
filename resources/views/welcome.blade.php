@@ -1,13 +1,13 @@
 @extends('layouts.app')
 
 @section('title')
-    Welcome to Nenad's Api
+    Teams
 @endsection
 
 @section('content')
 <div class="container mb-5">
     <div class="text-center mt-5 mb-5">
-        <h2>FIFA Women's World Cup</h2>
+        <h2>FIFA Women's World Cup 2019.</h2>
         <h2 class="mt-4">Groups</h2>
     </div>
     <div class="row">

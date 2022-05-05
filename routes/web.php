@@ -21,7 +21,7 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Route::get('/', [App\Http\Controllers\ProjectController::class, 'welcome'])->name('welcome');
+Route::get('/', [App\Http\Controllers\ProjectController::class, 'welcome'])->name('teams');
 
 Route::get('/matches', [App\Http\Controllers\ProjectController::class, 'matches'])->name('matches');
 
