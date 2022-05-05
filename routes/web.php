@@ -25,5 +25,6 @@ Route::get('/', [App\Http\Controllers\ProjectController::class, 'welcome'])->nam
 
 Route::get('/matches', [App\Http\Controllers\ProjectController::class, 'matches'])->name('matches');
 
-Route::get('/matches-json', [App\Http\Controllers\ProjectController::class, 'jsonMatches'])
-->name('jsonMatches');
+Route::get('/matches-json', [App\Http\Controllers\ProjectController::class, 'jsonMatches']);
+
+Route::get('/teams-json', [App\Http\Controllers\ProjectController::class, 'jsonTeams']);

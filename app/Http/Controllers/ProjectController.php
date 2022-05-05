@@ -126,9 +126,28 @@ class ProjectController extends Controller
          return view('jsonMatches')->with(['matches'=> collect($matches)]);
      }
 
+     public function jsonTeams()
+     {
+        $teams = Team::all();   $matches = Duel::all();
 
-    
+        $stat = json_decode($matches[0]->home_team_events);
 
+        // $wins;
+        // $draws;
+        // $losses;
+        // $games_played;
+        // $points;
+        // $goals_for;
+        // $goals_against;
+        // $goal_differential;
+
+
+
+
+
+        dd($stat);
+         return view('jsonTeams')->with(['result']);
+     }
      
 
 
