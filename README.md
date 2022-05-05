@@ -9,11 +9,11 @@
 
 ### Clone the repository 
 
-   <p> git clone https://github.com/Nenadsavkic/Bloggerman.git </p>
+   <p> git clone https://github.com/Nenadsavkic/FIFA-World-Cup-2019-Womens.git </p>
 
    ### Switch to the repository cloned folder
 
-   <p> example path:  PS C:\Users> cd bloggerman  </p>
+   <p> example path:  PS C:\Users> cd FIFA-World-Cup-2019-Womens  </p>
 
 ### Install all the dependencies using composer
 
@@ -32,13 +32,8 @@
    ```bash
    php artisan key:generate
    ```
-### Link storage directory
 
-   ```bash
-   php artisan storage:link
-   ```
-
-### Create database 'bloggerman' in your local server (xamp), then run migration
+### Create database 'world_cup' in your local server (xamp), then run migration
 ### Check the database connection in .env before migrating
 
    ```bash
