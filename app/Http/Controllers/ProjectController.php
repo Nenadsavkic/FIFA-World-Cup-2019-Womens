@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Duel;
 use App\Models\Team;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Http;
 
 class ProjectController extends Controller
@@ -59,8 +60,8 @@ class ProjectController extends Controller
 
     
 
-     public function matches()
-     {
+    public function matches()
+    {
         $response = json_decode(Http::get("http://worldcup.sfg.io/matches/"),true);
         $counter = collect($response)->count();
 
@@ -111,43 +112,102 @@ class ProjectController extends Controller
         return view('matches')->with(['matches'=>$matches]);
               
           
-     }
+    }
 
 
-     public function jsonMatches()
-     {
-         $all_matches = json_decode(Http::get('http://worldcup.sfg.io/matches'));
+    public function jsonMatches()
+    {
+         
+        $all_matches = json_decode(Http::get('http://worldcup.sfg.io/matches'));
 
-         $sorted_data = collect($all_matches)->sortByDesc('weather.temp_celsius')->toArray();
- 
+         $sorted_data = collect($all_matches)->sortByDesc('weather.temp_celsius')->toJson();
+         
+
          $matches = json_encode($sorted_data);
-        
 
-         return view('jsonMatches')->with(['matches'=> collect($matches)]);
-     }
+         return view('jsonMatches')->with(['matches'=> $matches]);
+    }
 
-     public function jsonTeams()
-     {
+
+
+    public function jsonTeams()
+    {
         $teams = Team::all();   $matches = Duel::all();
 
-        $stat = json_decode($matches[0]->home_team_events);
-
-        // $wins;
-        // $draws;
-        // $losses;
-        // $games_played;
-        // $points;
-        // $goals_for;
-        // $goals_against;
-        // $goal_differential;
 
 
+            for($i = 0; $i < $teams->count(); $i++){
+
+                foreach($teams as $key => $team){
+
+            
+                    
+                
+                    $home_team = $matches->where('home_team_country',  $team->country)->count();
+                    $away_team = $matches->where('away_team_country',  $team->country)->count();
+
+        
+
+
+                    // Ukupan broj meceva    
+                    $games_played = $home_team + $away_team; 
+
+                    // Pobede
+                    $wins = $matches->where('winner', $team->country)->count(); 
+
+                    //Nereseni
+                    $draws = $matches
+                    ->where('winner','Draw')
+                    ->where(['home_team_country'=> $team->country], '||' ,['away_team_country'=> $team->country])
+                    ->count(); // Norway == 1
+
+                    // Porazi
+                    $losses = $games_played - $wins - $draws;        
+
+                    // Poeni
+
+                    $points = $wins*3 + $draws;
+
+ 
+                    $team_data[$key] = $team.$draws;
+                
+                
+                }
+
+                
+
+
+           
+            }
+
+            
 
 
 
-        dd($stat);
-         return view('jsonTeams')->with(['result']);
-     }
+            dd($team_data);
+       
+
+    
+            
+        
+           // goals_for
+           // $goals_against;
+           // $goal_differential;
+
+
+
+
+
+            //dd($aways_team);
+            //dd($goals_for);
+            return view('jsonTeams')->with(['result']);
+
+    }    
+
+           
+     
+    
+    
      
 
 
