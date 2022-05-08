@@ -5,9 +5,10 @@
 @endsection
 
 @section('content')
-    <div class="container">
-        <div class="text-center mt-5 mb-5">
-            <h2>FIFA Women's World Cup</h2>
+    <div class="container pb-5">
+        <div class="headline text-center text-light mt-5 mb-5 pt-3 pb-3">
+            <h2>FIFA World Cup 2019. for Women</h2>
+            <hr>
             <h2 class="mt-4">Matches</h2>
         </div>
 
@@ -17,8 +18,7 @@
             </div>
         </div> 
         
-        <div class="row">
-            
+        <div class="row  img-holder">
             @foreach ($matches as $match)
     
                 @if( $match->stage_name == "First Stage")
@@ -191,7 +191,7 @@
             </div>
         </div> 
 
-        <div class="row">
+        <div class="row mb-5">
             
             @foreach ($matches as $match)
     

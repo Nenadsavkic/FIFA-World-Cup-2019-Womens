@@ -5,12 +5,13 @@
 @endsection
 
 @section('content')
-<div class="container mb-5">
-    <div class="text-center mt-5 mb-5">
-        <h2>FIFA Women's World Cup 2019.</h2>
+<div class="container mb-5 pb-5">
+    <div class="headline text-center text-light mt-5 mb-5 pt-3 pb-3">
+        <h2>FIFA World Cup 2019. for Women</h2>
+        <hr>
         <h2 class="mt-4">Groups</h2>
     </div>
-    <div class="row">
+    <div class="row pb-5">
         
             <div class="col-md-4 mt-4">                
             

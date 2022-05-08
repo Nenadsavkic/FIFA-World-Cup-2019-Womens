@@ -84,8 +84,9 @@
 
         <main class="py-4">
             @yield('content')
+            @include('partials.footer')
+
         </main>
-        @include('partials.footer')
 
     </div>
 </body>

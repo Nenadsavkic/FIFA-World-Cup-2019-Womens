@@ -16,7 +16,8 @@ use Illuminate\Support\Facades\Route;
 
 
 
-Auth::routes();
+Auth::routes(['register' => false, 'login' => false]);
+
 
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
@@ -28,4 +29,6 @@ Route::get('/matches', [App\Http\Controllers\ProjectController::class, 'matches'
 Route::get('/matches-json', [App\Http\Controllers\ProjectController::class, 'jsonMatches']);
 
 Route::get('/teams-json', [App\Http\Controllers\ProjectController::class, 'jsonTeams']);
+
+
 

@@ -9,5 +9,31 @@
 
 
 .py-4{
+    padding-bottom: 0 !important;
     min-height: 520px;
+    background-image: url('/images/grass2.png');
+
+}
+.headline{
+     background-color: brown;
+}
+
+.card {
+    border: 2px solid brown;
+}
+
+.card-header{
+    background-color: goldenrod;
+}
+
+.card-body{
+    background-color: brown;
+}
+
+.card-body h4{
+    color: antiquewhite;
+}
+
+.card-footer{
+    background-color: goldenrod;
 }
