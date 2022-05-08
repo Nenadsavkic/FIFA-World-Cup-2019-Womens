@@ -13,7 +13,7 @@
         </div>
 
         <div class="row">
-            <div class="col text-center">
+            <div class="col text-center stage-headline m-3 p-3">
                 <h3>First stage</h3>
             </div>
         </div> 
@@ -46,7 +46,7 @@
         </div>
 
         <div class="row mt-5">
-            <div class="col text-center">
+            <div class="col text-center stage-headline m-3 p-3">
                 <h3>Round of 16</h3>
             </div>
         </div>
@@ -80,7 +80,7 @@
         </div>
 
         <div class="row mt-5">
-            <div class="col text-center">
+            <div class="col text-center stage-headline m-3 p-3">
                 <h3>Quarter final</h3>
             </div>
         </div> 
@@ -116,7 +116,7 @@
 
 
         <div class="row mt-5">
-            <div class="col text-center">
+            <div class="col text-center stage-headline m-3 p-3">
                 <h3>Semi final</h3>
             </div>
         </div> 
@@ -151,7 +151,7 @@
 
 
         <div class="row mt-5">
-            <div class="col text-center">
+            <div class="col text-center stage-headline m-3 p-3">
                 <h3>Match for third place</h3>
             </div>
         </div> 
@@ -186,7 +186,7 @@
 
 
         <div class="row mt-5">
-            <div class="col text-center">
+            <div class="col text-center stage-headline m-3 p-3">
                 <h3>Final</h3>
             </div>
         </div> 

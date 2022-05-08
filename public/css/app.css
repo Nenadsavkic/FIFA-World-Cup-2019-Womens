@@ -11296,6 +11296,11 @@ textarea.form-control-lg {
   background-color: brown;
 }
 
+.stage-headline {
+  background-color: goldenrod;
+  border: 2px solid brown;
+}
+
 .card {
   border: 2px solid brown;
 }
