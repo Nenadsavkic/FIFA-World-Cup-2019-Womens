@@ -9,5 +9,9 @@ class Duel extends Model
 {
     use HasFactory;
     
+    public function duel()
+    {
+        return $this->belongsTo(Team::class);
+    }
 
 }

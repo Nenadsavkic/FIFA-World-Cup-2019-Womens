@@ -156,51 +156,49 @@ class ProjectController extends Controller
                     $wins = $matches->where('winner', $team->country)->count(); 
 
                     //Nereseni
-                    $draws = $matches
-                    ->where('winner','Draw')
-                    ->where(['home_team_country'=> $team->country], '||' ,['away_team_country'=> $team->country])
-                    ->count(); // Norway == 1
+                    $draws = DB::table('duels')
+                    ->where('home_team_country',$team->country)
+                    ->orWhere('away_team_country',$team->country)
+                    ->where('winner','Draw')    
+                    ->count();
 
                     // Porazi
                     $losses = $games_played - $wins - $draws;        
+                          
 
                     // Poeni
 
                     $points = $wins*3 + $draws;
+                    
 
- 
-                    $team_data[$key] = $team.$draws;
+
+                    $team_data[$key] = [
+                        
+                            'id' => $team->id,
+                            'country' => $team->country,
+                            'alternare_name' => $team->alternate_name,
+                            'fifa_code' => $team->fifa_code,
+                            'group_id' => $team->group_id,
+                            'group_letter' => $team->group_letter,
+                            'wins' => $wins,
+                            'draws' => $draws,
+                            'losses' => $losses,
+                            'games_played' => $games_played,
+                            'points' => $points,
+                        
+                    ];
                 
                 
                 }
 
-                
-
-
            
             }
 
-            
 
+            $result = (json_encode($team_data));
+                  
 
-
-            dd($team_data);
-       
-
-    
-            
-        
-           // goals_for
-           // $goals_against;
-           // $goal_differential;
-
-
-
-
-
-            //dd($aways_team);
-            //dd($goals_for);
-            return view('jsonTeams')->with(['result']);
+            return view('jsonTeams')->with(['result' => $result]);
 
     }    
 

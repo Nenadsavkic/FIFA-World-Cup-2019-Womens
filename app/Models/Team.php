@@ -9,4 +9,9 @@ class Team extends Model
 {
     use HasFactory;
 
+    public function duel()
+    {
+        return $this->hasMany(Duel::class);
+    }
+
 }
