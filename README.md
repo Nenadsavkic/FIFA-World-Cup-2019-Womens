@@ -28,6 +28,12 @@ Ono što će se ocenjivati je:
 -dizajn baze
 
 
+vraceni Json podaci:
+
+http://127.0.0.1:8000/matches-json
+http://127.0.0.1:8000/teams-json
+
+
 
 
 ## Installation
