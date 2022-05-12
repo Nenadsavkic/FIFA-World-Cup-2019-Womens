@@ -9,11 +9,11 @@ use Illuminate\Support\Facades\Http;
 
 class ProjectController extends Controller
 {
-   
+
 
 
     public function welcome()
-    {  
+    {
         $response = json_decode(Http::get("http://worldcup.sfg.io/teams/"));
         $counter = collect($response)->count();
 
@@ -28,37 +28,37 @@ class ProjectController extends Controller
                 $teams->group_letter = $value->group_letter;
                  if ($teams->count() != $counter) {
 
-                      $teams->save(); 
-    
+                      $teams->save();
+
                 }
 
-               
-            }      
-           
-        
-            
 
-      $teamsA = Team::all()->where('group_letter', 'A');  
-      $teamsB = Team::all()->where('group_letter', 'B');  
-      $teamsC = Team::all()->where('group_letter', 'C');  
-      $teamsD = Team::all()->where('group_letter', 'D');  
-      $teamsE = Team::all()->where('group_letter', 'E');  
-      $teamsF = Team::all()->where('group_letter', 'F');  
+            }
+
+
+
+
+      $teamsA = Team::all()->where('group_letter', 'A');
+      $teamsB = Team::all()->where('group_letter', 'B');
+      $teamsC = Team::all()->where('group_letter', 'C');
+      $teamsD = Team::all()->where('group_letter', 'D');
+      $teamsE = Team::all()->where('group_letter', 'E');
+      $teamsF = Team::all()->where('group_letter', 'F');
 
       return view('welcome')->with([
-          'teamsA' => $teamsA, 
-          'teamsB' => $teamsB, 
-          'teamsC' => $teamsC, 
-          'teamsD' => $teamsD, 
-          'teamsE' => $teamsE, 
-          'teamsF' => $teamsF, 
+          'teamsA' => $teamsA,
+          'teamsB' => $teamsB,
+          'teamsC' => $teamsC,
+          'teamsD' => $teamsD,
+          'teamsE' => $teamsE,
+          'teamsF' => $teamsF,
         ]);
 
 
 
     }
 
-    
+
 
     public function matches()
     {
@@ -93,39 +93,37 @@ class ProjectController extends Controller
              $duels->home_team_statistics = json_encode($value['home_team_statistics']);
              $duels->away_team_statistics = json_encode($value['away_team_statistics']);
              $duels->last_event_update_at = $value['last_event_update_at'];
-             $duels->last_score_update_at = $value['last_score_update_at']; 
+             $duels->last_score_update_at = $value['last_score_update_at'];
 
              if ($duels->count() != $counter) {
 
-                  $duels->save(); 
-             } 
-                 
-              
+                  $duels->save();
+             }
 
- 
-        } 
-        
+
+
+
+        }
+
         $matches = Duel::all();
-       
 
-        
+
+
         return view('matches')->with(['matches'=>$matches]);
-              
-          
+
+
     }
 
 
     public function jsonMatches()
     {
-         
+
         $all_matches = json_decode(Http::get('http://worldcup.sfg.io/matches'));
 
-         $sorted_data = collect($all_matches)->sortByDesc('weather.temp_celsius')->toJson();
-         
+         $sorted_data = collect($all_matches)->sortByDesc('weather.temp_celsius');
 
-         $matches = json_encode($sorted_data);
 
-         return view('jsonMatches')->with(['matches'=> $matches]);
+        return response(view('jsonMatches',array('matches'=>$sorted_data)),200, ['Content-TYpe' => 'application/json']);
     }
 
 
@@ -140,40 +138,40 @@ class ProjectController extends Controller
 
                 foreach($teams as $key => $team){
 
-            
-                    
-                
+
+
+
                     $home_team = $matches->where('home_team_country',  $team->country)->count();
                     $away_team = $matches->where('away_team_country',  $team->country)->count();
 
-        
 
 
-                    // Ukupan broj meceva    
-                    $games_played = $home_team + $away_team; 
+
+                    // Ukupan broj meceva
+                    $games_played = $home_team + $away_team;
 
                     // Pobede
-                    $wins = $matches->where('winner', $team->country)->count(); 
+                    $wins = $matches->where('winner', $team->country)->count();
 
                     //Nereseni
                     $draws = DB::table('duels')
                     ->where('home_team_country',$team->country)
                     ->orWhere('away_team_country',$team->country)
-                    ->where('winner','Draw')    
+                    ->where('winner','Draw')
                     ->count();
 
                     // Porazi
-                    $losses = $games_played - $wins - $draws;        
-                          
+                    $losses = $games_played - $wins - $draws;
+
 
                     // Poeni
 
                     $points = $wins*3 + $draws;
-                    
+
 
 
                     $team_data[$key] = [
-                        
+
                             'id' => $team->id,
                             'country' => $team->country,
                             'alternare_name' => $team->alternate_name,
@@ -185,28 +183,25 @@ class ProjectController extends Controller
                             'losses' => $losses,
                             'games_played' => $games_played,
                             'points' => $points,
-                        
+
                     ];
-                
-                
+
+
                 }
 
-           
+
             }
 
+        return response(view('jsonTeams',array('result'=>$team_data)),200, ['Content-TYpe' => 'application/json']);
 
-            $result = (json_encode($team_data));
-                  
 
-            return view('jsonTeams')->with(['result' => $result]);
+    }
 
-    }    
 
-           
-     
-    
-    
-     
+
+
+
+
 
 
 }

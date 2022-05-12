@@ -1,1 +1,2 @@
-{{ $matches }}
+{!! json_encode($matches) !!}
+
