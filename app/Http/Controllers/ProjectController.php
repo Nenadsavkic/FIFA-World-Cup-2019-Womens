@@ -145,7 +145,7 @@ class ProjectController extends Controller
                     $away_team = $matches->where('away_team_country',  $team->country)->count();
 
 
-
+                  // dd($home_team);
 
                     // Ukupan broj meceva
                     $games_played = $home_team + $away_team;
@@ -156,7 +156,7 @@ class ProjectController extends Controller
                     //Nereseni
                     $draws = DB::table('duels')
                     ->where('home_team_country',$team->country)
-                    ->orWhere('away_team_country',$team->country)
+                    ->where('away_team_country',$team->country)
                     ->where('winner','Draw')
                     ->count();
 
