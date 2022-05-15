@@ -132,6 +132,9 @@ class ProjectController extends Controller
     {
         $teams = Team::all();   $matches = Duel::all();
 
+        $duels = json_decode(Http::get("http://worldcup.sfg.io/matches/"));
+
+
 
 
             for($i = 0; $i < $teams->count(); $i++){
@@ -168,6 +171,34 @@ class ProjectController extends Controller
 
                     $points = $wins*3 + $draws;
 
+                    //goals for
+
+                    $goals_for_home = collect($duels)
+                    ->where('home_team.country', $team->country)
+                    ->sum('home_team.goals');
+
+                    $goals_for_away = collect($duels)
+                    ->where('away_team.country', $team->country)
+                    ->sum('away_team.goals');
+
+                    $goals_for = $goals_for_home + $goals_for_away;
+
+                    // goals against
+
+                    $goals_against_home = collect($duels)
+                    ->where('home_team.country', $team->country)
+                    ->sum('away_team.goals');
+
+                    $goals_against_away = collect($duels)
+                    ->where('away_team.country', $team->country)
+                    ->sum('home_team.goals');
+
+                    $goals_against = $goals_against_home + $goals_against_away;
+
+                    // goals diferentials
+
+                    $goals_diferentials = $goals_for - $goals_against;
+
 
 
                     $team_data[$key] = [
@@ -183,6 +214,9 @@ class ProjectController extends Controller
                             'losses' => $losses,
                             'games_played' => $games_played,
                             'points' => $points,
+                            'goals_for' => $goals_for,
+                            'goals_against' => $goals_against,
+                            'goals_diferentials' => $goals_diferentials,
 
                     ];
 
