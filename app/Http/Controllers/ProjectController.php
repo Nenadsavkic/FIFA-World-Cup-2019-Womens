@@ -148,7 +148,6 @@ class ProjectController extends Controller
                     $away_team = $matches->where('away_team_country',  $team->country)->count();
 
 
-                  // dd($home_team);
 
                     // Ukupan broj meceva
                     $games_played = $home_team + $away_team;
