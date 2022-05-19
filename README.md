@@ -11,10 +11,10 @@ http://worldcup.sfg.io/matches and http://worldcup.sfg.io/teams/
 Note that the import can be performed more than once, so it is necessary to do
 functionality for both import and eventual data updates.
 
-Based on the imported data, create a functionality that will return the ion with the following data
+Based on the imported data, create a functionality that will return the JSON with the following data
 and in the same format: http://worldcup.sfg.io/matches but sorted by temperature (warmest to coldest).
 
-Based on the imported data, create a functionality that will return json with the following data and u
+Based on the imported data, create a functionality that will return JSON with the following data and 
 in the same format: http://worldcup.sfg.io/teams/results
 
 Pay attention to scalability - a significant increase in the amount of data (million times), adding
@@ -23,15 +23,15 @@ new data types and the like.
 The project can be done using pure php or using libraries and frameworks.
 
 What will be evaluated is:
--optimization and clarity of SKL queries
+-optimization and clarity of SQL queries
 -optimization and clarity of PHP code (OOP)
 -base design
 
 
-returned Json data:
+returned JSON data:
 
-http: //127.0.0.1: 8000 / matches-json
-http: //127.0.0.1: 8000 / teams-json
+http://127.0.0.1:8000/matches-json
+http://127.0.0.1:8000/teams-json
 
 
 
