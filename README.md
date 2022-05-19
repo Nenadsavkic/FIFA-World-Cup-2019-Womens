@@ -1,34 +1,34 @@
-# FIFA WorldCup for Women 2019.
+# FIFA Women's World Cup 2019
 
-Zadatak
+Task
 
-Napraviti aplikaciju u php-u:
+Create an application in PHP:
 
-Kreirati funkcionalnost za import podataka svetskog prvenstva u fudbalu 2019. god.
-Sa sledeća dva linka:
-http://worldcup.sfg.io/matches i http://worldcup.sfg.io/teams/
+Create functionality for importing data from the 2019 World Cup.
+from the following two links:
+http://worldcup.sfg.io/matches and http://worldcup.sfg.io/teams/
 
-Obratiti pažnju na to da se import može izvršavati više puta, tako da je neophodno uraditi 
-funkcionalnost i za import i za eventualni update podataka.
+Note that the import can be performed more than once, so it is necessary to do
+functionality for both import and eventual data updates.
 
-Na osnovu importovanih podataka, kreirati funkcionalnost koja će vratiti json sa sledećim podacima 
-i u istom formatu: http://worldcup.sfg.io/matches ali poređanih po temperaturi (najtoplije ka najhladnije).
+Based on the imported data, create a functionality that will return the JSON with the following data
+and in the same format: http://worldcup.sfg.io/matches but sorted by temperature (warmest to coldest).
 
-Na osnovu importovanih podataka, kreirati funkcionalnost koja će vratiti json sa sledećim podacima i u
-istom formatu: http://worldcup.sfg.io/teams/results
+Based on the imported data, create a functionality that will return JSON with the following data and 
+in the same format: http://worldcup.sfg.io/teams/results
 
-Obratiti pažnju na skalabilnost - značajno povećanje količine podataka (milion puta), dodavanje 
-novih tipova podataka i slično.
+Pay attention to scalability - a significant increase in the amount of data (million times), adding
+new data types and the like.
 
-Projekat može da se uradi pomoću čistog php-a ili korišćenjem biblioteka i framework-a.
+The project can be done using pure php or using libraries and frameworks.
 
-Ono što će se ocenjivati je:
--optimizovanost i jasnoća SQL upita
--optimizovanost i jasnoća PHP koda (OOP)
--dizajn baze
+What will be evaluated is:
+-optimization and clarity of SQL queries
+-optimization and clarity of PHP code (OOP)
+-base design
 
 
-vraceni Json podaci:
+returned JSON data:
 
 http://127.0.0.1:8000/matches-json
 http://127.0.0.1:8000/teams-json
