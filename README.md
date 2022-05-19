@@ -1,6 +1,6 @@
 # FIFA Women's World Cup 2019
 
-Assignment
+Task
 
 Create an application in PHP:
 
