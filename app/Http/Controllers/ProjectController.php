@@ -134,7 +134,7 @@ class ProjectController extends Controller
 
         $matches = Duel::all();
 
-        // I have problem with retreiving some data from database (goals), so I try this way.
+        // I have a problem with retrieving some data from the database (goals), so I try this way.
         $duels = json_decode(Http::get("http://worldcup.sfg.io/matches/"));
 
 
