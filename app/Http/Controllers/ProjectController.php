@@ -130,8 +130,11 @@ class ProjectController extends Controller
 
     public function jsonTeams()
     {
-        $teams = Team::all();   $matches = Duel::all();
+        $teams = Team::all();
 
+        $matches = Duel::all();
+
+        // I have problem with retreiving some data from database (goals), so I try this way.
         $duels = json_decode(Http::get("http://worldcup.sfg.io/matches/"));
 
 
