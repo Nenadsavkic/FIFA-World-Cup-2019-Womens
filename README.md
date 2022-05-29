@@ -68,6 +68,7 @@ What will be evaluated is:
 returned JSON data:
 
 http://127.0.0.1:8000/matches-json
+<br>
 http://127.0.0.1:8000/teams-json
 
 
@@ -122,6 +123,7 @@ http://127.0.0.1:8000/teams-json
 
 <p> You can see returned JSON data on foloving links:
     http://127.0.0.1:8000/matches-json
+    <br>
     http://127.0.0.1:8000/teams-json
 </p>
 
